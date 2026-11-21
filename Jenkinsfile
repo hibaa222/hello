@@ -1,9 +1,8 @@
 pipeline {
     agent any
     parameters{
-       string(name: 'VERSION', defaultValue: '', description: 'version to deploy on prod')
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0], description: '')
-        booleanParam(name: 'executeTests', defualtValue: true, description:'')
+       choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description:'')
     }
     stages {
 
@@ -27,7 +26,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 echo 'deploying application...'
-                echo "deploying version ${params.version}
+                echo "deploying version ${params.VERSION}"
             }
         }
     }
